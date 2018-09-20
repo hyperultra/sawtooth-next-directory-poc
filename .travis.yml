@@ -1,13 +1,3 @@
-# language: python
-# python: 
-#   - "3.6"
-# # command to install dependencies if required
-# # install:
-# #   - pip install -r requirements.txt
-# script: 
-#   - pytest --ignore=integration_tests
-
-
 jobs:  
   include:
     - stage: backend
@@ -21,4 +11,9 @@ jobs:
       language: node_js
       node_js:
         - "lts/*"
-        
+      before_install:
+        - cd ./ui
+      install:
+        - npm install
+      script:
+        - npm test
